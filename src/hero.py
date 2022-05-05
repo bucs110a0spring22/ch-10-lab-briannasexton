@@ -1,6 +1,7 @@
 import pygame
 import random
-#model
+from src import healthbar
+
 class Hero(pygame.sprite.Sprite):
     def __init__(self, name, x, y, img_file):
         #initialize all the Sprite functionality
@@ -19,6 +20,7 @@ class Hero(pygame.sprite.Sprite):
         #set other attributes
         self.name = name
         self.speed = 3
+        self.maxHealth = 3
         self.health = 3
 
     #methods to make moving our hero easier

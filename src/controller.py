@@ -25,6 +25,7 @@ class Controller:
             self.enemies.add(enemy.Enemy("Boogie", x, y, 'assets/enemy.png'))
         self.hero = hero.Hero("Conan", 50, 80, "assets/hero.png")
         self.all_sprites = pygame.sprite.Group((self.hero,) + tuple(self.enemies))
+        self.healthbar = healthbar.Healthbar(self.screen)
         self.state = "GAME"
 
     def mainLoop(self):
@@ -67,6 +68,8 @@ class Controller:
                 self.state = "GAMEOVER"
             self.all_sprites.draw(self.screen)
 
+            self.lifebar.UpdateLife()
+            self.lifebar.lifeFactor = (self.hero.life / self.hero.maxLife)
             # update the screen
             pygame.display.flip()
 
